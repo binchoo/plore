@@ -2,6 +2,7 @@
 <html lang="ko">
 
 <head>
+    <meta name="google-site-verification" content="pKzrfDHP3piyBpahok9A0Z3KVx5vaWNZIbzXBY7B4Zg" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <title>[##_page_title_##] | [##_title_##]</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -349,6 +350,19 @@
                         <p class="title"><span class="has-text-info">[##_list_conform_##]</span> 검색 결과</p>
                         <p class="subtitle">[##_list_count_##]건</p>
                     </div>
+                    <s_list_rep>
+                        <div>
+                            <span
+                                class="has-text-grey-light">[##_list_rep_date_year_##]-[##_list_rep_date_month_##]-[##_list_rep_date_day_##]</span>
+                            •
+                            <a href="[##_list_rep_category_link_##]"><span
+                                    class="has-text-info">[##_list_rep_category_##]</span></a>
+                            <p class="title"><a href="[##_list_rep_link_##]">[##_list_rep_title_##]</a>
+                            </p>
+                            <p class="subtitle">[##_list_rep_summary_##]</p>
+                            <hr>
+                        </div>
+                    </s_list_rep>
                 </s_list>
                 <s_article_rep>
                     <s_permalink_article_rep>
@@ -515,6 +529,7 @@
                                 </s_rp_input_form>
                             </s_rp>
                         </div>
+
                     </s_permalink_article_rep>
                     <s_index_article_rep>
                         <div>
@@ -580,28 +595,31 @@
     </footer>
 </div>
 <s_if_var_scroll-spy>
-<!-- Get a specific version -->
-<script src="https://cdn.jsdelivr.net/gh/cferdinandi/gumshoe@5.1.1/dist/gumshoe.polyfills.min.js"></script>
-<script src="./images/scroll-spy-extension.js"></script>
-<script>
-    var resultHTML = CreateAnchorListHTML("#content h1, #content h2");
-    document.getElementById("scroll-spy-menu").appendChild(resultHTML);
-    var spy = new Gumshoe('#scroll-spy-menu a', {
-        navClass: 'is-active', // applied to the nav list item
-        contentClass: 'is-active', // applied to the content
-        nested: true,
-        nestedClass: 'is-active'
-    });
-</script>
+    <!-- Get a specific version -->
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/gumshoe@5.1.1/dist/gumshoe.polyfills.min.js"></script>
+    <script src="./images/scroll-spy-extension.js"></script>
+    <script>
+        var resultHTML = CreateAnchorListHTML("#content h1, #content h2");
+        document.getElementById("scroll-spy-menu").appendChild(resultHTML);
+        var spy = new Gumshoe('#scroll-spy-menu a', {
+            navClass: 'is-active', // applied to the nav list item
+            contentClass: 'is-active', // applied to the content
+            nested: true,
+            nestedClass: 'is-active'
+        });
+    </script>
 </s_if_var_scroll-spy>
 <s_if_var_reading-time>
     <script src="./images/reading-time-es5.js"></script>
 </s_if_var_reading-time>
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
-<script
-    src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-<script>hljs.initLineNumbersOnLoad({
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js">
+</script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+<script>
+    hljs.initLineNumbersOnLoad({
         singleLine: true
     });
 </script>
@@ -613,7 +631,8 @@
         var bodyId = document.getElementsByTagName("body")[0].id;
         if (bodyId == 'tt-body-page' && post != null) {
             var contentTag = document.getElementById("content");
-            var content = contentTag.innerHTML.substr(0, contentTag.innerHTML.indexOf("<div class=\"container_postbtn #post_button_group\">"));
+            var content = contentTag.innerHTML.substr(0, contentTag.innerHTML.indexOf(
+                "<div class=\"container_postbtn #post_button_group\">"));
             var _readTime = readTime(content, 120, 15, 1000, ['img', 'Image']),
                 humanizedDuration = _readTime.humanizedDuration,
                 duration = _readTime.duration,
