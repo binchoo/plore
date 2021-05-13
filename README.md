@@ -81,8 +81,9 @@ npm run build
 
 3. `release`폴더에 저장됩니다.
 
-# 기여
-PR 허용
+# 기여 
+PR 허용: https://github.com/binchoo/plore/
+PR 미허용: https://github.com/zxc010613/plore
 
 # 라이센스
 [MIT License](./LICENSE)
