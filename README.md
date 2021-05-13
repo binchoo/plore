@@ -82,7 +82,7 @@ npm run build
 3. `release`폴더에 저장됩니다.
 
 # 기여
-PRS 미허용
+PR 허용
 
 # 라이센스
 [MIT License](./LICENSE)
