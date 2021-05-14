@@ -65,7 +65,7 @@ class MarkdownTree {
 }
 
 class SpyMenuElementHelper {
-	static getUL(asRoot) {
+	static getUL() {
 		return document.createElement("ul");
 	}
 	static getLI(textContent) {
