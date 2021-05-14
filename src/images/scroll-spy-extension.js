@@ -36,8 +36,8 @@ function CreateAnchorListHTML(query) {
 }
 
 class MarkdownTree {
-	constructor(textContent, depth) {
-		this.textContent = textContent;
+	constructor(dom, depth) {
+		this.dom = dom;
 		this.depth = depth;
 		this.child = [];
 		this.parent = undefined;
@@ -48,34 +48,40 @@ class MarkdownTree {
 	}
 	asElement() {
 		if (this.depth == -1) { //루트 노드일 경우
-			const ul = SpyMenuHtmlBuilder.getUL();
+			const ul = SpyMenuElementHelper.getUL();
 			this.child.forEach(child=> { ul.appendChild(child.asElement()) });
 			ul.classList.add("menu-list");
 			return ul;
 		} else {
-			const li = SpyMenuHtmlBuilder.getLI(this.textContent);
-			const ul = SpyMenuHtmlBuilder.getUL();
-			li.appendChild(ul);
-			this.child.forEach(child=> { ul.appendChild(child.asElement()) });
+			const li = SpyMenuElementHelper.getLI(this.dom);
+			const ul = SpyMenuElementHelper.getUL();
+			if (this.child.length > 0) {
+				li.appendChild(ul);
+				this.child.forEach(child=> { ul.appendChild(child.asElement()) });
+			}
 			return li;
 		}
 	}
 }
 
-class SpyMenuHtmlBuilder {
-	static getUL(asRoot) {
+class SpyMenuElementHelper {
+	static getUL() {
 		return document.createElement("ul");
 	}
-	static getLI(textContent) {
+	static getLI(dom) {
 		const li = document.createElement("li");
-		li.appendChild(this.getA(textContent));
+		li.appendChild(this.getA(dom));
 		return li;
 	}
-	static getA(textContent) {
+	static getA(dom) {
+		const textContent = dom.textContent
 		const hash = Math.floor(Math.random() * 1000);
 		const a = document.createElement("a");
-		a.href = "#" + textContent + "(" + hash.toString() + ")";
-		a.innerText = textContent;
+		
+		dom.id = textContent+ "(" + hash.toString() + ")";
+		
+		a.href = "#" + dom.id
+		a.innerText = textContent
 		return a;
 	}
 }
@@ -84,7 +90,7 @@ function getStructuredHTML(tagsOrdered) {
 	console.assert(tagsOrdered.length > 0);
 
 	const { doms, hierarchyTable } = parseDomHierarchy(tagsOrdered);
-	const tree = new MarkdownTree("root", -1);
+	const tree = new MarkdownTree(document, -1);
 
 	buildMarkdownTree(doms, hierarchyTable, 0, tree);
 	return tree.asElement();
@@ -112,10 +118,9 @@ function buildMarkdownTree(doms, hierarchyTable, index, tree) {
 	const itsDepth = hierarchyTable.get(it.tagName);
 
 	if (index == 0 || itsDepth > tree.depth) { //뎁스가 더 깊을 때
-		const newTree = new MarkdownTree(it.textContent, itsDepth);
+		const newTree = new MarkdownTree(it, itsDepth);
 
 		tree.addChild(newTree);
-		console.log(tree.textContent + "->" + it.textContent);
 		buildMarkdownTree(doms, hierarchyTable, index + 1, newTree);
 	} else { //뎁스가 동위이거나 얕을 때
 		buildMarkdownTree(doms, hierarchyTable, index, tree.parent);
