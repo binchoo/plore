@@ -46,27 +46,42 @@ class MarkdownTree {
 		child.parent = this;
 		this.child.push(child);
 	}
-	parseIntoHTML() {
-		/**Not Implemented. */
-	}
 }
 
-let getStructuredHTML = function(tagsOrdered) {
+function getStructuredHTML(tagsOrdered) {
 	console.assert(tagsOrdered.length > 0);
 
-	const {doms, hierarchyTable} = parseDomHierarchy(tagsOrdered);
+	const {
+		doms,
+		hierarchyTable
+	} = parseDomHierarchy(tagsOrdered);
 	const tree = buildMarkdownTree(doms, hierarchyTable, 0, new MarkdownTree("root", -1));
 
 	const html = tree.parseIntoHTML();
 	return html;
 }
 
-let buildMarkdownTree = function(doms, hierarchyTable, index, tree) {
+function parseDomHierarchy(tagsOrdered) {
+	let query = tagsOrdered.map(tag => "#content " + tag).join(",")
+	let doms = document.querySelectorAll(query);
+	let hierarchyTable = new Map();
+
+	tagsOrdered.forEach((tag, index) => {
+		hierarchyTable.set(tag.toUpperCase(), index);
+	});
+
+	return {
+		doms: doms,
+		hierarchyTable: hierarchyTable
+	};
+}
+
+function buildMarkdownTree(doms, hierarchyTable, index, tree) {
 	if (doms.length <= index) return tree;
-	
+
 	const it = doms[index];
 	const itsDepth = hierarchyTable.get(it.tagName);
-	
+
 	if (index == 0 || itsDepth > tree.depth) { //뎁스가 더 깊을 때
 		const newTree = new MarkdownTree(it.textContent, itsDepth);
 
@@ -76,19 +91,4 @@ let buildMarkdownTree = function(doms, hierarchyTable, index, tree) {
 	} else { //뎁스가 동위이거나 얕을 때
 		buildMarkdownTree(doms, hierarchyTable, index, tree.parent);
 	}
-}
-
-let parseDomHierarchy = function(tagsOrdered) {
-	let query = tagsOrdered.map(tag => "#content " + tag).join(",")
-	let doms = document.querySelectorAll(query);
-	let hierarchyTable = new Map();
-
-	tagsOrdered.forEach((tag, index)=>{
-		hierarchyTable.set(tag.toUpperCase(), index);
-	});
-
-	return {
-		doms: doms, 
-		hierarchyTable: hierarchyTable
-	};
 }
