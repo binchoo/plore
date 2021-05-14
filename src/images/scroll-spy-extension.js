@@ -48,13 +48,13 @@ class MarkdownTree {
 	}
 	asElement() {
 		if (this.depth == -1) { //루트 노드일 경우
-			const ul = SpyMenuHtmlBuilder.getUL();
+			const ul = SpyMenuElementHelper.getUL();
 			this.child.forEach(child=> { ul.appendChild(child.asElement()) });
 			ul.classList.add("menu-list");
 			return ul;
 		} else {
-			const li = SpyMenuHtmlBuilder.getLI(this.textContent);
-			const ul = SpyMenuHtmlBuilder.getUL();
+			const li = SpyMenuElementHelper.getLI(this.textContent);
+			const ul = SpyMenuElementHelper.getUL();
 			if (this.child.length > 0) {
 				li.appendChild(ul);
 				this.child.forEach(child=> { ul.appendChild(child.asElement()) });
@@ -64,7 +64,7 @@ class MarkdownTree {
 	}
 }
 
-class SpyMenuHtmlBuilder {
+class SpyMenuElementHelper {
 	static getUL(asRoot) {
 		return document.createElement("ul");
 	}
