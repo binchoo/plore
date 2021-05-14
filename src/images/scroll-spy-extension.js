@@ -34,3 +34,57 @@ function CreateAnchorListHTML(query) {
 	}
 	return resultHtml;
 }
+
+class MarkdownTree {
+	constructor(textContent, depth) {
+		this.textContent = textContent;
+		this.depth = depth;
+		this.child = [];
+		this.parent = undefined;
+	}
+	addChild(child) {
+		child.parent = this;
+		this.child.push(child);
+	}
+}
+
+let getStructuredHTML = function(tagsOrdered) {
+	console.assert(tagsOrdered.length > 0);
+	let {doms, hierarchyTable} = parseDomHierarchy(tagsOrdered);
+	const tree = new MarkdownTree("root", -1);
+	buildMarkdownTree(doms, hierarchyTable, 0, tree);
+
+	/**Not Implemented. */
+	return tree;
+}
+
+let buildMarkdownTree = function(doms, hierarchyTable, index, tree) {
+	if (index >= doms.length) return;
+	
+	const it = doms[index];
+	const itsDepth = hierarchyTable.get(it.tagName);
+	
+	console.log(it.textContent + "[]" + tree.textContent);
+	if (index == 0 || itsDepth > tree.depth) { //뎁스가 더 깊을 때
+		const newTree = new MarkdownTree(it.textContent, itsDepth);
+		tree.addChild(newTree);
+		buildMarkdownTree(doms, hierarchyTable, index + 1, newTree);
+	} else { //뎁스가 동위이거나 얕을 때
+		buildMarkdownTree(doms, hierarchyTable, index, tree.parent);
+	}
+}
+
+let parseDomHierarchy = function(tagsOrdered) {
+	let query = tagsOrdered.map(tag => "#content " + tag).join(",")
+	let doms = document.querySelectorAll(query);
+	let hierarchyTable = new Map();
+
+	tagsOrdered.forEach((tag, index)=>{
+		hierarchyTable.set(tag.toUpperCase(), index);
+	});
+
+	return {
+		doms: doms, 
+		hierarchyTable: hierarchyTable
+	};
+}
