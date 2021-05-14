@@ -46,28 +46,32 @@ class MarkdownTree {
 		child.parent = this;
 		this.child.push(child);
 	}
+	parseIntoHTML() {
+		/**Not Implemented. */
+	}
 }
 
 let getStructuredHTML = function(tagsOrdered) {
 	console.assert(tagsOrdered.length > 0);
-	let {doms, hierarchyTable} = parseDomHierarchy(tagsOrdered);
-	const tree = new MarkdownTree("root", -1);
-	buildMarkdownTree(doms, hierarchyTable, 0, tree);
 
-	/**Not Implemented. */
-	return tree;
+	const {doms, hierarchyTable} = parseDomHierarchy(tagsOrdered);
+	const tree = buildMarkdownTree(doms, hierarchyTable, 0, new MarkdownTree("root", -1));
+
+	const html = tree.parseIntoHTML();
+	return html;
 }
 
 let buildMarkdownTree = function(doms, hierarchyTable, index, tree) {
-	if (index >= doms.length) return;
+	if (doms.length <= index) return tree;
 	
 	const it = doms[index];
 	const itsDepth = hierarchyTable.get(it.tagName);
 	
-	console.log(it.textContent + "[]" + tree.textContent);
 	if (index == 0 || itsDepth > tree.depth) { //뎁스가 더 깊을 때
 		const newTree = new MarkdownTree(it.textContent, itsDepth);
+
 		tree.addChild(newTree);
+		console.log(tree.textContent + "->" + it.textContent);
 		buildMarkdownTree(doms, hierarchyTable, index + 1, newTree);
 	} else { //뎁스가 동위이거나 얕을 때
 		buildMarkdownTree(doms, hierarchyTable, index, tree.parent);
