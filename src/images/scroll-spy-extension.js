@@ -46,19 +46,48 @@ class MarkdownTree {
 		child.parent = this;
 		this.child.push(child);
 	}
+	asElement() {
+		if (this.depth == -1) { //루트 노드일 경우
+			const ul = SpyMenuHtmlBuilder.getUL();
+			this.child.forEach(child=> { ul.appendChild(child.asElement()) });
+			ul.classList.add("menu-list");
+			return ul;
+		} else {
+			const li = SpyMenuHtmlBuilder.getLI(this.textContent);
+			const ul = SpyMenuHtmlBuilder.getUL();
+			li.appendChild(ul);
+			this.child.forEach(child=> { ul.appendChild(child.asElement()) });
+			return li;
+		}
+	}
+}
+
+class SpyMenuHtmlBuilder {
+	static getUL(asRoot) {
+		return document.createElement("ul");
+	}
+	static getLI(textContent) {
+		const li = document.createElement("li");
+		li.appendChild(this.getA(textContent));
+		return li;
+	}
+	static getA(textContent) {
+		const hash = Math.floor(Math.random() * 1000);
+		const a = document.createElement("a");
+		a.href = "#" + textContent + "(" + hash.toString() + ")";
+		a.innerText = textContent;
+		return a;
+	}
 }
 
 function getStructuredHTML(tagsOrdered) {
 	console.assert(tagsOrdered.length > 0);
 
-	const {
-		doms,
-		hierarchyTable
-	} = parseDomHierarchy(tagsOrdered);
-	const tree = buildMarkdownTree(doms, hierarchyTable, 0, new MarkdownTree("root", -1));
+	const { doms, hierarchyTable } = parseDomHierarchy(tagsOrdered);
+	const tree = new MarkdownTree("root", -1);
 
-	const html = tree.parseIntoHTML();
-	return html;
+	buildMarkdownTree(doms, hierarchyTable, 0, tree);
+	return tree.asElement();
 }
 
 function parseDomHierarchy(tagsOrdered) {
@@ -77,7 +106,7 @@ function parseDomHierarchy(tagsOrdered) {
 }
 
 function buildMarkdownTree(doms, hierarchyTable, index, tree) {
-	if (doms.length <= index) return tree;
+	if (doms.length <= index) return;
 
 	const it = doms[index];
 	const itsDepth = hierarchyTable.get(it.tagName);
