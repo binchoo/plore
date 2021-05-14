@@ -55,8 +55,10 @@ class MarkdownTree {
 		} else {
 			const li = SpyMenuHtmlBuilder.getLI(this.textContent);
 			const ul = SpyMenuHtmlBuilder.getUL();
-			li.appendChild(ul);
-			this.child.forEach(child=> { ul.appendChild(child.asElement()) });
+			if (this.child.length > 0) {
+				li.appendChild(ul);
+				this.child.forEach(child=> { ul.appendChild(child.asElement()) });
+			}
 			return li;
 		}
 	}
