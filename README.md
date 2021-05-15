@@ -6,7 +6,7 @@
 마크다운으로 쓰는 포스트에 초점이 맞추어져 있습니다.  
 
 # 목차
-<ul class="menu-list"><li><a href="#특징">특징</a><ul><li><a href="#브라우저 호환">브라우저 호환</a></li><li><a href="#Google PageSpeed Insights">Google PageSpeed Insights</a></li></ul></li><li><a href="#설치">설치</a><ul><li><a href="#설정 가이드">설정 가이드</a></li><li><a href="#빌드하기">빌드하기</a></li><li><a href="#빌드 툴 설치">빌드 툴 설치</a></li></ul></li><li><a href="#기여 정책">기여 정책</a></li><li><a href="#라이센스">라이센스</a></li></ul>
+<ul class="menu-list"><li><a href="#특징">특징</a><ul><li><a href="#브라우저-호환">브라우저 호환</a></li><li><a href="#Google-PageSpeed-Insights">Google PageSpeed Insights</a></li></ul></li><li><a href="#설치">설치</a><ul><li><a href="#설정-가이드">설정 가이드</a></li><li><a href="#빌드하기">빌드하기</a></li><li><a href="#빌드-툴-설치">빌드 툴 설치</a></li></ul></li><li><a href="#기여-정책">기여 정책</a></li><li><a href="#라이센스">라이센스</a></li></ul>
 
 # 특징
 + 반응형으로 PC와 모바일 환경에서 전시됩니다. 
