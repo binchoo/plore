@@ -3,26 +3,32 @@
 
 /* IE10+ 
 BEGIN=================================*/
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
- /* Enter your style code */
-	.hero{
+@media screen and (-ms-high-contrast: active),
+(-ms-high-contrast: none) {
+
+	/* Enter your style code */
+	.hero {
 		display: -webkit-box;
-        display: -ms-flexbox;
+		display: -ms-flexbox;
 	}
-	.hero-body{
+
+	.hero-body {
 		-webkit-box-flex: 0;
-        -ms-flex: 0 0 auto;
-        flex: 0 0 auto;
-		height:calc(100% / 3);
-		
+		-ms-flex: 0 0 auto;
+		flex: 0 0 auto;
+		height: calc(100% / 3);
+
 	}
-	.wrapper{
-		display:block !important;
+
+	.wrapper {
+		display: block !important;
 	}
-	main{
-		 flex: 1 1 auto !important;
+
+	main {
+		flex: 1 1 auto !important;
 	}
 }
+
 /* IE10+
 END===================================*/
 
@@ -34,42 +40,53 @@ BEGIN=================================*/
 .social-link {
 	background-color: white;
 }
+
 .social-link i {
 	color: black;
 }
+
 .dropdown-content {
 	text-align: left;
 	padding-left: 10px;
 }
+
 /* N 이미지 */
 .dropdown-content img {
 	display: none;
 }
+
 /* 블로그 설명 */
 #blog_desc {
 	padding: 10px 0px 10px 0px;
 	white-space: pre-wrap;
 }
+
 /* 외부 링크 */
 .link-navbar {
 	padding: 10px 0px 15px 0px;
 }
+
 /* 카테고리 드롭다운 */
 .link_tit {
 	display: none;
 }
+
 .category_list>li>a>.c_cnt {
 	display: none;
 }
+
 .category_list>li {
 	text-align: start;
 }
+
 .sub_category_list {
 	margin-left: 20px;
 }
+
 .devel-type {
 	padding-left: 10px;
 }
+
 /* 헤더
 END===================================*/
 /* 게시글
@@ -77,90 +94,112 @@ BEGIN=================================*/
 #post-admin {
 	padding-top: 10px;
 }
+
 .tag-list {
 	padding-bottom: 50px;
 }
+
 .tag-list>a::before {
 	content: '#';
 }
+
 #post>#content table {
 	margin-bottom: 0px;
 }
+
 pre {
 	padding: 0px;
-	margin-top:16px;
+	margin-top: 16px;
 	margin-bottom: 16px;
 }
+
 #content {
 	padding-top: 50px;
 }
+
 .commentList li {
 	list-style: none;
 }
+
 #post ul {
 	list-style-type: disc;
 }
+
 #post ul ul {
 	list-style-type: circle;
 }
+
 #post ul ul ul {
 	list-style-type: square;
 }
-#post>#content h1::before, h2::before,
-h3::before, h4::before, h5::before, h6::before {
-  display: block;
+
+#post>#content h1::before,
+h2::before,
+h3::before,
+h4::before,
+h5::before,
+h6::before {
+	display: block;
 	content: '';
-  height: 10vh;
-  margin-top: -10vh;
+	height: 10vh;
+	margin-top: -10vh;
 	visibility: hidden;
 }
+
 /* 게시글
 END===================================*/
 
 /* Scroll Spy
 BEGIN=================================*/
-  .menu-list a {
+.menu-list a {
 	border-radius: 2px;
 	color: #4a4a4a;
 	display: block;
 	padding: 0.5em 0.75em;
-  }
-  .menu-list {
+}
+
+.menu-list {
 	line-height: 1.25;
-  }
-  .menu-list a:hover {
+}
+
+.menu-list a:hover {
 	background-color: whitesmoke;
 	color: #363636;
-  }
+}
 
-.menu-list .is-active > a {
+.menu-list .is-active>a {
 	background-color: #3273dc;
-  }
-.menu-list .is-active > a{
+}
+
+.menu-list .is-active>a {
 	background-color: #3273dc;
 	color: #fff;
 }
-  
-  .menu-list ul {
+
+.menu-list ul {
 	border-left: 1px solid #dbdbdb;
 	margin: 0.75em;
 	padding-left: 0.75em;
-  }
-#scroll-spy-menu{
-	position:fixed;
 }
+
+#scroll-spy-menu {
+	position: fixed;
+}
+
 /* Scroll Spy
 END===================================*/
 
 /* 댓글
 BEGIN=================================*/
-.commentList > li{
-  margin-top: 1rem;
-  padding-top: 1rem;
+.commentList>li {
+	margin-top: 1rem;
+	padding-top: 1rem;
 }
-.commentList .media .media{
-margin-top: 0.5rem;
+
+.commentList .media .media {
+	margin-top: 0.5rem;
 }
+
 /* 댓글
 END===================================*/
 
@@ -168,53 +207,67 @@ END===================================*/
 #paging {
 	display: none;
 }
+
 #tt-body-category #paging {
 	display: block;
 }
+
 #tt-body-index #paging {
 	display: block;
 }
+
 #tt-body-guestbook #paging {
 	display: block;
 }
+
 #guestbook {
 	display: none;
 }
+
 #tt-body-guestbook #guestbook {
 	display: block;
 }
+
 #taglog {
 	display: none;
 }
+
 #tt-body-tag #taglog {
 	display: block;
 }
+
 #search-result {
 	display: none;
 }
+
 #tt-body-category #search-result {
 	display: block;
 }
+
 #localog {
 	display: none;
 }
+
 #tt-body-location #localog {
 	display: block;
 }
+
 /* 인덱스 페이지
 BEGIN=================================*/
 main>.columns:last-child {
 	margin-bottom: 0px;
 	margin-top: 0px;
 }
+
 /* 인덱스 페이지
 END===================================*/
 
 /* 태그 페이지
 BEGIN=================================*/
-a[class^="cloud"]{
-	padding-right:2px;
+a[class^="cloud"] {
+	padding-right: 2px;
 }
+
 /* 태그 페이지
 END===================================*/
 
@@ -222,14 +275,17 @@ END===================================*/
 .media .level-left .input {
 	width: 100px;
 }
+
 textarea,
 .input {
 	border-radius: 0px !important;
 	border: solid 1px #eee;
 }
+
 #social a {
 	margin: 0px 5px 0px 5px;
 }
+
 html,
 body {
 	margin: 0;
@@ -237,19 +293,23 @@ body {
 	width: 100%;
 	height: 100%;
 }
+
 body {
 	font-family: 'Noto Sans KR', sans-serif !important;
 }
+
 #post>article,
 textarea,
 .input {
 	font-family: 'Noto Sans KR', sans-serif;
 }
+
 .wrapper {
 	display: flex;
 	min-height: 100vh;
 	flex-direction: column;
 }
+
 main {
 	flex: 1;
 }
@@ -268,16 +328,20 @@ BEGIN=================================*/
 	vertical-align: top;
 	padding: 0px 20px 0px 0px !important;
 }
+
 .hljs-ln-code {
 	padding: 0px !important;
 }
+
 .hljs-ln-line {
 	border: none !important;
 }
+
 .hljs-ln>tbody>tr {
-	background-color: transparent  !important;
+	background-color: transparent !important;
 	border-top: none !important;
 }
+
 /*highlight.js
 END===================================*/
 
@@ -289,8 +353,9 @@ END===================================*/
 header .hero-body {
 	padding: 1rem;
 }
-header figure{
-	width:64px;
+
+header figure {
+	width: 64px;
 	height: 64px;
 }
 
@@ -300,16 +365,19 @@ header figure{
 		display: inline;
 		margin: 0px 5px 0px 5px;
 	}
+
 	.link-navbar>.divider {
 		display: inline;
 		border-left: 1px solid hsl(0, 0%, 86%);
 		border-right: 1px solid hsl(0, 0%, 86%);
 	}
+
 	.hero-body {
 		padding: 3rem 1.5rem !important;
 	}
-	header figure{
-		width:128px;
+
+	header figure {
+		width: 128px;
 		height: 128px;
 	}
 }
