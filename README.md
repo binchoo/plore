@@ -69,6 +69,7 @@
 
 # 기여 정책
 - PR 허용: https://github.com/binchoo/plore/
+  - Issue-driven 방식: 항상 이슈부터 작성하여 개발로 이어져야 합니다. 이슈는 커밋과 PR에서 양방향 참조되어야 합니다.
 - PR 미허용: https://github.com/zxc010613/plore
 
 # 라이센스
