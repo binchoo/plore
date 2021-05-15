@@ -44,7 +44,7 @@
 - [0.2.0](https://github.com/zxc010613/plore/blob/master/changelog.0.N.N.md#google-pagespeed-insights020)
 
 # 설치
-1. [Release](https://github.com/zxc010613/plore/releases)에서 가장 최신 버전의 파일을 다운받습니다.
+1. [Release](https://github.com/binchoo/plore/releases)에서 가장 최신 버전의 파일을 다운받습니다.
 2. 압축을 풉니다.
 3. 티스토리 관리 > 꾸미기 > 스킨 편집에 들어갑니다.
 4. 스킨 등록 버튼을 클릭합니다.
