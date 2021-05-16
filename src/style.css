@@ -141,8 +141,8 @@ h5::before,
 h6::before {
 	display: block;
 	content: '';
-	height: 405px;
-	margin-top: -405px;
+	height: 10vh;
+	margin-top: -10vh;
 	visibility: hidden;
 }
 
@@ -183,7 +183,7 @@ BEGIN=================================*/
 }
 
 #scroll-spy-menu {
-	position: fixed;
+	position: absolute;
 }
 
 /* Scroll Spy
@@ -362,6 +362,11 @@ header .hero-body {
 header figure {
 	width: 64px;
 	height: 64px;
+}
+
+@media all and (max-width: 768px) {
+	.column.is-0-mobile {
+		visibility: hidden;
 }
 
 /* Tablet & Desktop Device */

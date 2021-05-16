@@ -599,9 +599,20 @@
     <script src="https://cdn.jsdelivr.net/gh/cferdinandi/gumshoe@5.1.1/dist/gumshoe.polyfills.min.js"></script>
     <script src="./images/scroll-spy-extension.js"></script>
     <script>
-        var resultHTML = getStructuredHTML(["h1", "h2"]);
         var spyMenu = document.getElementById("scroll-spy-menu")
-        spyMenu.appendChild(resultHTML);
+        spyMenu.appendChild(getStructuredHTML(["h1", "h2"]));
+        
+        window.addEventListener('scroll', (event) => {
+            const main = document.getElementsByTagName('main')[0];
+            if (main.getBoundingClientRect().top <= 0) {
+                spyMenu.style.position = "fixed";
+                spyMenu.style.top = "0.75rem";
+            } else {
+                spyMenu.style.position = "absolute";
+                spyMenu.style.top = "inherit";
+            }
+        }, false);
+
         var spy = new Gumshoe('#scroll-spy-menu a', {
             navClass: 'is-active', // applied to the nav list item
             contentClass: 'is-active', // applied to the content
