@@ -600,7 +600,8 @@
     <script src="./images/scroll-spy-extension.js"></script>
     <script>
         var resultHTML = getStructuredHTML(["h1", "h2"]);
-        document.getElementById("scroll-spy-menu").appendChild(resultHTML);
+        var spyMenu = document.getElementById("scroll-spy-menu")
+        spyMenu.appendChild(resultHTML);
         var spy = new Gumshoe('#scroll-spy-menu a', {
             navClass: 'is-active', // applied to the nav list item
             contentClass: 'is-active', // applied to the content
