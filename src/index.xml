@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <skin>
   <information>
-    <name>PLORE</name>
-    <version>0.2.0</version>
+    <name>binchoo/plore</name>
+    <version>1.0.1</version>
     <description>
       <![CDATA[개발자와 잘 어울리는 티스토리 스킨]]>
     </description>
@@ -11,9 +11,9 @@
     </license>
   </information>
   <author>
-    <name>Plorence</name>
-    <homepage>http://plorence.kr</homepage>
-    <email>ploseok@gmail.com</email>
+    <name>binchoo</name>
+    <homepage>https://binchoo.tistory.com</homepage>
+    <email>jbinchoo@gmail.com</email>
   </author>
   <default>
     <recentEntries>0</recentEntries>
